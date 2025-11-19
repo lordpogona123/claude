@@ -1,44 +1,1330 @@
 {
   "casinos": [
     {
-      "name": "Example Casino 1",
-      "url": "https://example-casino1.com",
-      "region": "EU",
-      "country": "Malta",
+      "name": "1xbet",
+      "url": "https://www.1xbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
       "priority": "high"
     },
     {
-      "name": "Example Casino 2",
-      "url": "https://example-casino2.com",
+      "name": "Micasino",
+      "url": "https://www.micasino.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Zeuscasino",
+      "url": "https://zeuscasino.live/",
+      "region": "EU",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "24vivo",
+      "url": "https://www.24vivo.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Caliente",
+      "url": "https://www.caliente.mx",
+      "region": "LATAM",
+      "country": "Mexico",
+      "priority": "high"
+    },
+    {
+      "name": "Playcity",
+      "url": "https://www.playcity.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Pincocasino",
+      "url": "https://pincocasino.co/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betconstruct",
+      "url": "https://www.betconstruct.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Leon",
+      "url": "https://leon.casino",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Winmachancecasino",
+      "url": "https://www.winmachancecasino.com/en/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Melbet",
+      "url": "https://melbet.org/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Apuestatotal",
+      "url": "https://www.apuestatotal.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Lemon",
+      "url": "https://lemon.casino/es/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "M",
+      "url": "https://m.bahigo.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Ezcash15",
+      "url": "https://ezcash15.casino",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Juegaenlineachile",
+      "url": "https://www.juegaenlineachile.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Microgame",
+      "url": "https://www.microgame.it",
+      "region": "EU",
+      "country": "Italy",
+      "priority": "high"
+    },
+    {
+      "name": "Juegaenlinea",
+      "url": "https://www.juegaenlinea.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Winvegasplus",
+      "url": "https://www.winvegasplus.com/en/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betsweet",
+      "url": "https://betsweet.online/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Sweepsroyal",
+      "url": "https://www.sweepsroyal.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Tr",
+      "url": "https://tr.sekabet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Maltcasino535",
+      "url": "https://maltcasino535.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Pauseandplay",
+      "url": "https://pauseandplay.es/",
+      "region": "EU",
+      "country": "Spain",
+      "priority": "high"
+    },
+    {
+      "name": "Winuniquecasino",
+      "url": "https://www.winuniquecasino.com/en/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "1gamehub",
+      "url": "https://1gamehub.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Playregal",
+      "url": "https://www.playregal.com/en/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Juegalo",
+      "url": "https://juegalo.com/cl",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Latinka",
+      "url": "https://www.latinka.com.pe/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Olabahis",
+      "url": "https://olabahis.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Mr",
+      "url": "https://mr.bet",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Platincasino",
+      "url": "https://www.platincasino.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Pinupcasino",
+      "url": "https://pinupcasino.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Asyabahis1041",
+      "url": "https://asyabahis1041.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Strendus",
+      "url": "https://www.strendus.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Richsweeps",
+      "url": "https://richsweeps.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Dash",
+      "url": "https://dash.bet/en/home",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Speedsweeps",
+      "url": "https://speedsweeps.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Sweeplasvegas",
+      "url": "https://www.sweeplasvegas.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Rokutel",
+      "url": "https://rokutel.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Olymp",
+      "url": "https://olymp.casino/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Dotworkers",
+      "url": "https://www.dotworkers.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betfury",
+      "url": "https://www.betfury.io",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Richardcasino3",
+      "url": "https://www.richardcasino3.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Casinogranmadridonline",
+      "url": "https://www.casinogranmadridonline.es",
+      "region": "EU",
+      "country": "Spain",
+      "priority": "high"
+    },
+    {
+      "name": "Bingoemcasa1",
+      "url": "https://bingoemcasa1.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Jojobet",
+      "url": "https://jojobet.tv/tr/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Supercat-casino",
+      "url": "https://www.supercat-casino.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Queenwincasino",
+      "url": "https://www.queenwincasino.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Staycasino",
+      "url": "https://www.staycasino.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Slottica",
+      "url": "https://www.slottica.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betconnections",
+      "url": "https://betconnections.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Novibet",
+      "url": "https://www.novibet.mx",
+      "region": "LATAM",
+      "country": "Mexico",
+      "priority": "high"
+    },
+    {
+      "name": "7k736",
+      "url": "https://7k736.casino/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Money-x",
+      "url": "https://money-x.day",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Virtualsoft",
+      "url": "https://www.virtualsoft.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "20bet",
+      "url": "https://www.20bet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Softgenius",
+      "url": "https://www.softgenius.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Grandpashabet1323",
+      "url": "https://grandpashabet1323.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Rooster",
+      "url": "https://www.rooster.bet/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Theboss",
+      "url": "https://theboss.casino/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Betconnections",
+      "url": "https://betconnections.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Olimp",
+      "url": "https://www.olimp.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Mostbet",
+      "url": "https://www.mostbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Azarlatino",
+      "url": "https://azarlatino.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Spin",
+      "url": "https://spin.city",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Bet-set",
+      "url": "https://www.bet-set.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Spinco92",
+      "url": "https://spinco92.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Superbet",
+      "url": "https://www.superbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Dumanbet",
+      "url": "https://dumanbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Bruce",
+      "url": "https://bruce.bet",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Betconnections",
+      "url": "https://betconnections.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Betconnections",
+      "url": "https://betconnections.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Azarlatino",
+      "url": "https://azarlatino.com.py/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Cosmicslot",
+      "url": "https://www.cosmicslot.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "1gamehub",
+      "url": "https://1gamehub.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Casino",
+      "url": "https://casino.n1bet.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betconnections",
+      "url": "https://betconnections.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "22bet",
+      "url": "https://22bet.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Levelupcasino",
+      "url": "https://levelupcasino.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Tonybet",
+      "url": "https://www.tonybet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Luckykong",
+      "url": "https://www.luckykong.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betconnections",
+      "url": "https://betconnections.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Slotozen",
+      "url": "https://www.slotozen.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Goodwin",
+      "url": "https://goodwin.am/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Bizzocasino",
+      "url": "https://bizzocasino.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betwinner",
+      "url": "https://betwinner.com/es",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Brillx",
+      "url": "https://brillx.gg",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Totogaming",
+      "url": "https://www.totogaming.am",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Betmaster",
+      "url": "https://www.betmaster.mx",
+      "region": "LATAM",
+      "country": "Mexico",
+      "priority": "high"
+    },
+    {
+      "name": "Elganador",
+      "url": "https://elganador.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Wildtokyo46",
+      "url": "https://wildtokyo46.com/en",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Platincasino",
+      "url": "https://www.platincasino.es",
+      "region": "EU",
+      "country": "Spain",
+      "priority": "high"
+    },
+    {
+      "name": "Betconnections",
+      "url": "https://betconnections.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Pinbahis680",
+      "url": "https://pinbahis680.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Toratoracasino",
+      "url": "https://toratoracasino.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Azino777",
+      "url": "https://www.azino777.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Hugocasino17",
+      "url": "https://hugocasino17.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Luckyzino",
+      "url": "https://luckyzino.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Nioplay",
+      "url": "https://www.nioplay.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Vulkanspiele",
+      "url": "https://vulkanspiele.com/es",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Cbet",
+      "url": "https://cbet.gg/es-ES",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Rollingslots63",
+      "url": "https://rollingslots63.com/es",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Wageon",
+      "url": "https://wageon.io/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Betconnections",
+      "url": "https://betconnections.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Vivatbet",
+      "url": "https://vivatbet.eu/",
+      "region": "EU",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Nationalcasino",
+      "url": "https://nationalcasino.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Africabet365",
+      "url": "https://www.africabet365.net/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Nashbet",
+      "url": "https://www.nashbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Zooma",
+      "url": "http://zooma.bet",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Lightbet24",
+      "url": "https://www.lightbet24.com/home",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betwild113",
+      "url": "https://betwild113.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Takbet",
+      "url": "https://www.takbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Slotandbet",
+      "url": "https://www.slotandbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Vespercasino",
+      "url": "https://www.vespercasino.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betboss",
+      "url": "https://www.betboss.co/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betfun24",
+      "url": "https://www.betfun24.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Mexplay",
+      "url": "https://mexplay.mx/",
+      "region": "LATAM",
+      "country": "Mexico",
+      "priority": "high"
+    },
+    {
+      "name": "Cratosroyalbet457",
+      "url": "https://cratosroyalbet457.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Jokerbet",
+      "url": "https://www.jokerbet.es",
+      "region": "EU",
+      "country": "Spain",
+      "priority": "high"
+    },
+    {
+      "name": "Scommettendo",
+      "url": "https://www.scommettendo.it",
+      "region": "EU",
+      "country": "Italy",
+      "priority": "high"
+    },
+    {
+      "name": "Allrightcasino",
+      "url": "https://www.allrightcasino.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Fairspin",
+      "url": "https://fairspin.io",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Tincabet",
+      "url": "http://tincabet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Pusulabet763",
+      "url": "https://www.pusulabet763.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "888",
+      "url": "https://www.888.es",
+      "region": "EU",
+      "country": "Spain",
+      "priority": "high"
+    },
+    {
+      "name": "Luckas",
+      "url": "https://www.luckas.ec",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Winsports365",
+      "url": "https://winsports365.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betflag",
+      "url": "https://www.betflag.it",
+      "region": "EU",
+      "country": "Italy",
+      "priority": "high"
+    },
+    {
+      "name": "Holiganbet",
+      "url": "https://www.holiganbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Pulpobet",
+      "url": "https://www.pulpobet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Tomi",
+      "url": "https://tomi.club/en/casino/slots",
+      "region": "LATAM",
+      "country": "Chile",
+      "priority": "high"
+    },
+    {
+      "name": "Matbet753",
+      "url": "https://www.matbet753.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Nakitbahis866",
+      "url": "https://www.nakitbahis866.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Bilbet",
+      "url": "https://bilbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betandreas",
+      "url": "https://www.betandreas.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betwoon616",
+      "url": "https://betwoon616.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Slottyway",
+      "url": "https://www.slottyway.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betboom",
+      "url": "https://www.betboom.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betgit",
+      "url": "https://betgit.com/en",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Gem",
+      "url": "https://gem.bet",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Brazino777",
+      "url": "https://www.brazino777.com",
       "region": "LATAM",
       "country": "Brazil",
       "priority": "high"
     },
     {
-      "name": "Example Casino 3",
-      "url": "https://example-casino3.com",
+      "name": "Nuxgame",
+      "url": "https://www.nuxgame.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Marsbahis",
+      "url": "https://www.marsbahis.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Tikobet",
+      "url": "https://tikobet.io",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Admiral-best",
+      "url": "http://admiral-best.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Sportbet",
+      "url": "https://sportbet.one/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Octavianlab",
+      "url": "https://www.octavianlab.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Win777",
+      "url": "https://www.win777.fun",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Sellatuparley",
+      "url": "https://www.sellatuparley.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Betfa",
+      "url": "https://betfa.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Supergra",
+      "url": "https://supergra.ua",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Betzenit",
+      "url": "https://betzenit.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Pelicancasino",
+      "url": "https://pelicancasino.games",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Marcbet",
+      "url": "https://marcbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "687artemisbet",
+      "url": "https://www.687artemisbet.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Glory",
+      "url": "https://glory.casino/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Benjabet295",
+      "url": "https://benjabet295.com/tr/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Spinamba",
+      "url": "https://www.spinamba.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Bgame",
+      "url": "https://www.bgame.it",
+      "region": "EU",
+      "country": "Italy",
+      "priority": "high"
+    },
+    {
+      "name": "Uwin",
+      "url": "https://uwin.com/en/uwin-casino",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Mavibet711",
+      "url": "https://www.mavibet711.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Joocasino",
+      "url": "https://www.joocasino.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Ebingo",
+      "url": "http://eBingo.es",
       "region": "EU",
       "country": "Spain",
-      "priority": "medium"
+      "priority": "high"
     },
     {
-      "name": "Example Casino 4",
-      "url": "https://example-casino4.com",
-      "region": "Asia",
-      "country": "Philippines",
-      "priority": "medium"
+      "name": "Cepbahis178",
+      "url": "https://cepbahis178.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
     },
     {
-      "name": "Example Casino 5",
-      "url": "https://example-casino5.com",
-      "region": "EU",
-      "country": "UK",
+      "name": "Bonanzagame",
+      "url": "https://www.bonanzagame.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Spinsbro",
+      "url": "https://spinsbro.com/en",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Fortuneclock",
+      "url": "https://www.fortuneclock.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Spinfever",
+      "url": "https://www.spinfever.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Moolahverse",
+      "url": "https://www.moolahverse.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Win90",
+      "url": "https://win90.win/",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Betadonis",
+      "url": "https://betadonis.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "888",
+      "url": "https://www.888.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Luckybirdcasino",
+      "url": "https://www.luckybirdcasino.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Kyngs6507",
+      "url": "https://kyngs6507.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Fortuneplay",
+      "url": "https://fortuneplay.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Rooli",
+      "url": "https://www.rooli.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Maxispin",
+      "url": "https://maxispin.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Winpanda",
+      "url": "https://www.winpanda.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Bluechip",
+      "url": "https://bluechip.io",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Goldspin7",
+      "url": "https://goldspin7.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Tenlot",
+      "url": "https://www.tenlot.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Banger-playz",
+      "url": "https://banger-playz.com/",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Towerstar",
+      "url": "https://www.towerstar.bet",
+      "region": "Unknown",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "Dggy",
+      "url": "https://dggy.club",
+      "region": "LATAM",
+      "country": "Chile",
+      "priority": "high"
+    },
+    {
+      "name": "Rocketspin",
+      "url": "http://rocketspin.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Marsbet",
+      "url": "https://www.marsbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Cozbet",
+      "url": "https://cozbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
       "priority": "high"
     }
   ],
   "metadata": {
-    "total_casinos": 5,
-    "last_updated": "2024-11-19",
-    "note": "SAMPLE DATA - Replace with actual casino list (600+ websites). Upload your CSV file and it will be automatically converted to this format."
+    "total_casinos": 188,
+    "last_updated": "2025-11-19T11:32:05.623455",
+    "source": "urlinksSS - Paginas (1).csv",
+    "regions": {
+      "LATAM": 130,
+      "EU": 12,
+      "Unknown": 46
+    }
   }
 }

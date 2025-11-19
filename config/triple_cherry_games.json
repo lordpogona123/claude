@@ -1,69 +1,449 @@
 {
   "games": [
     {
-      "title": "Cash Pig",
-      "aliases": ["CashPig", "Cash-Pig", "cash pig"],
-      "release_date": "2023-01-15",
+      "title": "7’s Club",
+      "aliases": [
+        "7’sClub",
+        "7’s-club",
+        "7’s Club"
+      ],
+      "release_date": "Unknown",
       "game_type": "slot"
     },
     {
-      "title": "Power of Gods: The Pantheon",
-      "aliases": ["Power of Gods", "PowerOfGods", "power-of-gods-pantheon"],
-      "release_date": "2022-11-20",
+      "title": "America Goal Crash",
+      "aliases": [
+        "AmericaGoalCrash",
+        "America Goal Crash",
+        "america-goal-crash"
+      ],
+      "release_date": "Unknown",
       "game_type": "slot"
     },
     {
-      "title": "Egyptian Rebirth II",
-      "aliases": ["Egyptian Rebirth 2", "EgyptianRebirthII", "egyptian-rebirth-ii"],
-      "release_date": "2023-03-10",
+      "title": "Big Dig Gold",
+      "aliases": [
+        "Big Dig Gold",
+        "big-dig-gold",
+        "BigDigGold"
+      ],
+      "release_date": "Unknown",
       "game_type": "slot"
     },
     {
-      "title": "Muertos Multiplier Megaways",
-      "aliases": ["Muertos Multiplier", "muertos-megaways"],
-      "release_date": "2022-09-15",
+      "title": "Board Quest",
+      "aliases": [
+        "Board Quest",
+        "board-quest",
+        "BoardQuest"
+      ],
+      "release_date": "Unknown",
       "game_type": "slot"
     },
     {
-      "title": "Book of Souls",
-      "aliases": ["BookOfSouls", "book-of-souls"],
-      "release_date": "2023-05-01",
+      "title": "Bounty Seas",
+      "aliases": [
+        "bounty-seas",
+        "BountySeas",
+        "Bounty Seas"
+      ],
+      "release_date": "Unknown",
       "game_type": "slot"
     },
     {
-      "title": "Wild Trucks",
-      "aliases": ["WildTrucks", "wild-trucks"],
-      "release_date": "2023-02-28",
+      "title": "Brewhaus Spins",
+      "aliases": [
+        "Brewhaus Spins",
+        "BrewhausSpins",
+        "brewhaus-spins"
+      ],
+      "release_date": "Unknown",
       "game_type": "slot"
     },
     {
-      "title": "Fruit Supreme",
-      "aliases": ["FruitSupreme", "fruit-supreme"],
-      "release_date": "2022-12-05",
+      "title": "Catrina: Amor Eterno",
+      "aliases": [
+        "Catrina:AmorEterno",
+        "catrina:-amor-eterno",
+        "Catrina: Amor Eterno"
+      ],
+      "release_date": "Unknown",
       "game_type": "slot"
     },
     {
-      "title": "Dragon's Fire Megaways",
-      "aliases": ["Dragons Fire", "dragons-fire-megaways"],
-      "release_date": "2023-04-12",
+      "title": "Clover Up",
+      "aliases": [
+        "CloverUp",
+        "Clover Up",
+        "clover-up"
+      ],
+      "release_date": "Unknown",
       "game_type": "slot"
     },
     {
-      "title": "Wild Depths",
-      "aliases": ["WildDepths", "wild-depths"],
-      "release_date": "2023-06-20",
+      "title": "Dwarf Treasures",
+      "aliases": [
+        "dwarf-treasures",
+        "Dwarf Treasures",
+        "DwarfTreasures"
+      ],
+      "release_date": "Unknown",
       "game_type": "slot"
     },
     {
-      "title": "Aztec Coins",
-      "aliases": ["AztecCoins", "aztec-coins"],
-      "release_date": "2022-10-18",
+      "title": "Echo Wilds",
+      "aliases": [
+        "Echo Wilds",
+        "EchoWilds",
+        "echo-wilds"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "El Dorado Ritual",
+      "aliases": [
+        "ElDoradoRitual",
+        "el-dorado-ritual",
+        "El Dorado Ritual"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Elsa’s Bierhaus",
+      "aliases": [
+        "elsa’s-bierhaus",
+        "Elsa’sBierhaus",
+        "Elsa’s Bierhaus"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Epic Cherry 6",
+      "aliases": [
+        "Epic Cherry 6",
+        "EpicCherry6",
+        "epic-cherry-6"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Fish & Hooks!",
+      "aliases": [
+        "Fish & Hooks!",
+        "Fish&Hooks!",
+        "fish-&-hooks!"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Frankenlove",
+      "aliases": [
+        "Frankenlove",
+        "frankenlove"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Goal Crash",
+      "aliases": [
+        "GoalCrash",
+        "Goal Crash",
+        "goal-crash"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Gods Odyssey",
+      "aliases": [
+        "gods-odyssey",
+        "Gods Odyssey",
+        "GodsOdyssey"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Golden Bomblins",
+      "aliases": [
+        "golden-bomblins",
+        "GoldenBomblins",
+        "Golden Bomblins"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Golden Coin Toads",
+      "aliases": [
+        "Golden Coin Toads",
+        "golden-coin-toads",
+        "GoldenCoinToads"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Hunters Cursed Masks",
+      "aliases": [
+        "HuntersCursedMasks",
+        "Hunters Cursed Masks",
+        "hunters-cursed-masks"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Iced Fossils",
+      "aliases": [
+        "Iced Fossils",
+        "IcedFossils",
+        "iced-fossils"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Imperial Flames",
+      "aliases": [
+        "imperial-flames",
+        "Imperial Flames",
+        "ImperialFlames"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Iron Rail Riches",
+      "aliases": [
+        "Iron Rail Riches",
+        "IronRailRiches",
+        "iron-rail-riches"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Jade of Cleopatra",
+      "aliases": [
+        "jade-of-cleopatra",
+        "JadeofCleopatra",
+        "Jade of Cleopatra"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Joker Wheel",
+      "aliases": [
+        "Joker Wheel",
+        "joker-wheel",
+        "JokerWheel"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Joker’s Kingdom",
+      "aliases": [
+        "joker’s-kingdom",
+        "Joker’s Kingdom",
+        "Joker’sKingdom"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "La Bicolor Goal Crash",
+      "aliases": [
+        "La Bicolor Goal Crash",
+        "LaBicolorGoalCrash",
+        "la-bicolor-goal-crash"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Mega Chef Christmas Edition",
+      "aliases": [
+        "MegaChefChristmasEdition",
+        "Mega Chef Christmas Edition",
+        "mega-chef-christmas-edition"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Monsters Fear Bullets",
+      "aliases": [
+        "monsters-fear-bullets",
+        "Monsters Fear Bullets",
+        "MonstersFearBullets"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Mystic Buffalo",
+      "aliases": [
+        "mystic-buffalo",
+        "MysticBuffalo",
+        "Mystic Buffalo"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Nile Treasures",
+      "aliases": [
+        "NileTreasures",
+        "Nile Treasures",
+        "nile-treasures"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Pinocchio’s Journey",
+      "aliases": [
+        "pinocchio’s-journey",
+        "Pinocchio’sJourney",
+        "Pinocchio’s Journey"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Rebel World",
+      "aliases": [
+        "rebel-world",
+        "RebelWorld",
+        "Rebel World"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Red Queen in Wonderland",
+      "aliases": [
+        "red-queen-in-wonderland",
+        "RedQueeninWonderland",
+        "Red Queen in Wonderland"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Saint Fermin",
+      "aliases": [
+        "saint-fermin",
+        "Saint Fermin",
+        "SaintFermin"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Steam Storm",
+      "aliases": [
+        "Steam Storm",
+        "steam-storm",
+        "SteamStorm"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Sugar Frenzy",
+      "aliases": [
+        "SugarFrenzy",
+        "sugar-frenzy",
+        "Sugar Frenzy"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Sunset Highways",
+      "aliases": [
+        "SunsetHighways",
+        "Sunset Highways",
+        "sunset-highways"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "The Walking Wild",
+      "aliases": [
+        "The Walking Wild",
+        "the-walking-wild",
+        "TheWalkingWild"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Thunder Rock",
+      "aliases": [
+        "thunder-rock",
+        "ThunderRock",
+        "Thunder Rock"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Tomoe’s Sushi Bar",
+      "aliases": [
+        "Tomoe’sSushiBar",
+        "tomoe’s-sushi-bar",
+        "Tomoe’s Sushi Bar"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Wanted Wilds",
+      "aliases": [
+        "wanted-wilds",
+        "WantedWilds",
+        "Wanted Wilds"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Wild Cup Soccer",
+      "aliases": [
+        "Wild Cup Soccer",
+        "wild-cup-soccer",
+        "WildCupSoccer"
+      ],
+      "release_date": "Unknown",
+      "game_type": "slot"
+    },
+    {
+      "title": "Yin Yang Legends",
+      "aliases": [
+        "Yin Yang Legends",
+        "YinYangLegends",
+        "yin-yang-legends"
+      ],
+      "release_date": "Unknown",
       "game_type": "slot"
     }
   ],
   "metadata": {
-    "total_games": 10,
-    "last_updated": "2024-11-19",
-    "note": "This is a sample list. Replace with actual Triple Cherry game catalog."
+    "total_games": 44,
+    "last_updated": "2025-11-19T11:32:05.625075",
+    "source": "urlinksSS - Paginas (1).csv",
+    "note": "Game catalog extracted and cleaned from casino data"
   }
 }
