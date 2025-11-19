@@ -1,0 +1,69 @@
+{
+  "games": [
+    {
+      "title": "Cash Pig",
+      "aliases": ["CashPig", "Cash-Pig", "cash pig"],
+      "release_date": "2023-01-15",
+      "game_type": "slot"
+    },
+    {
+      "title": "Power of Gods: The Pantheon",
+      "aliases": ["Power of Gods", "PowerOfGods", "power-of-gods-pantheon"],
+      "release_date": "2022-11-20",
+      "game_type": "slot"
+    },
+    {
+      "title": "Egyptian Rebirth II",
+      "aliases": ["Egyptian Rebirth 2", "EgyptianRebirthII", "egyptian-rebirth-ii"],
+      "release_date": "2023-03-10",
+      "game_type": "slot"
+    },
+    {
+      "title": "Muertos Multiplier Megaways",
+      "aliases": ["Muertos Multiplier", "muertos-megaways"],
+      "release_date": "2022-09-15",
+      "game_type": "slot"
+    },
+    {
+      "title": "Book of Souls",
+      "aliases": ["BookOfSouls", "book-of-souls"],
+      "release_date": "2023-05-01",
+      "game_type": "slot"
+    },
+    {
+      "title": "Wild Trucks",
+      "aliases": ["WildTrucks", "wild-trucks"],
+      "release_date": "2023-02-28",
+      "game_type": "slot"
+    },
+    {
+      "title": "Fruit Supreme",
+      "aliases": ["FruitSupreme", "fruit-supreme"],
+      "release_date": "2022-12-05",
+      "game_type": "slot"
+    },
+    {
+      "title": "Dragon's Fire Megaways",
+      "aliases": ["Dragons Fire", "dragons-fire-megaways"],
+      "release_date": "2023-04-12",
+      "game_type": "slot"
+    },
+    {
+      "title": "Wild Depths",
+      "aliases": ["WildDepths", "wild-depths"],
+      "release_date": "2023-06-20",
+      "game_type": "slot"
+    },
+    {
+      "title": "Aztec Coins",
+      "aliases": ["AztecCoins", "aztec-coins"],
+      "release_date": "2022-10-18",
+      "game_type": "slot"
+    }
+  ],
+  "metadata": {
+    "total_games": 10,
+    "last_updated": "2024-11-19",
+    "note": "This is a sample list. Replace with actual Triple Cherry game catalog."
+  }
+}

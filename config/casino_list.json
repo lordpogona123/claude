@@ -1,0 +1,44 @@
+{
+  "casinos": [
+    {
+      "name": "Example Casino 1",
+      "url": "https://example-casino1.com",
+      "region": "EU",
+      "country": "Malta",
+      "priority": "high"
+    },
+    {
+      "name": "Example Casino 2",
+      "url": "https://example-casino2.com",
+      "region": "LATAM",
+      "country": "Brazil",
+      "priority": "high"
+    },
+    {
+      "name": "Example Casino 3",
+      "url": "https://example-casino3.com",
+      "region": "EU",
+      "country": "Spain",
+      "priority": "medium"
+    },
+    {
+      "name": "Example Casino 4",
+      "url": "https://example-casino4.com",
+      "region": "Asia",
+      "country": "Philippines",
+      "priority": "medium"
+    },
+    {
+      "name": "Example Casino 5",
+      "url": "https://example-casino5.com",
+      "region": "EU",
+      "country": "UK",
+      "priority": "high"
+    }
+  ],
+  "metadata": {
+    "total_casinos": 5,
+    "last_updated": "2024-11-19",
+    "note": "SAMPLE DATA - Replace with actual casino list (600+ websites). Upload your CSV file and it will be automatically converted to this format."
+  }
+}

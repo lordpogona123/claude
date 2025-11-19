@@ -1,0 +1,6 @@
+name,url,region,country,priority
+Example Casino 1,https://example-casino1.com,EU,Malta,high
+Example Casino 2,https://example-casino2.com,LATAM,Brazil,high
+Example Casino 3,https://example-casino3.com,EU,Spain,medium
+Example Casino 4,https://example-casino4.com,Asia,Philippines,medium
+Example Casino 5,https://example-casino5.com,NA,Canada,low

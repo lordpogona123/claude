@@ -1,0 +1,61 @@
+{
+  "scraping": {
+    "parallel_workers": 10,
+    "timeout": 30,
+    "retry_attempts": 3,
+    "retry_delay": 2,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "respect_robots_txt": true,
+    "rate_limit_delay": 1,
+    "max_page_size_mb": 10
+  },
+  "detection": {
+    "search_terms": [
+      "Triple Cherry",
+      "3Cherry",
+      "TCH",
+      "TC Games",
+      "TripleCherry"
+    ],
+    "provider_patterns": [
+      "triple.*cherry",
+      "3cherry",
+      "tc games",
+      "triplecherry"
+    ],
+    "page_types_to_scan": [
+      "homepage",
+      "games",
+      "providers",
+      "search",
+      "categories"
+    ],
+    "common_paths": [
+      "/",
+      "/games",
+      "/slots",
+      "/casino",
+      "/providers",
+      "/software",
+      "/game-providers",
+      "/slots/providers",
+      "/casino/games"
+    ]
+  },
+  "evidence": {
+    "capture_screenshots": false,
+    "capture_html_snippets": true,
+    "max_snippet_length": 500,
+    "screenshot_format": "png"
+  },
+  "proxies": {
+    "enabled": false,
+    "proxy_list": [],
+    "rotate_on_failure": true
+  },
+  "output": {
+    "save_raw_html": false,
+    "json_indent": 2,
+    "timestamp_format": "%Y-%m-%d %H:%M:%S"
+  }
+}
