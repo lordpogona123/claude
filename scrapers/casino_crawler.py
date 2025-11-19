@@ -6,7 +6,7 @@ import json
 import os
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Dict, List
+from typing import Dict, List, Optional
 from tqdm import tqdm
 import logging
 
