@@ -10,9 +10,12 @@ from typing import Dict, List, Optional
 from tqdm import tqdm
 import logging
 
-from .data_extractor import DataExtractor
-
 logger = logging.getLogger(__name__)
+
+try:
+    from .enhanced_extractor import EnhancedDataExtractor as DataExtractor
+except ImportError:
+    from .data_extractor import DataExtractor
 
 
 class CasinoCrawler:
