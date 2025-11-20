@@ -27,24 +27,42 @@ class EnhancedDataExtractor(BaseScraper):
         self.common_paths = self.detection_config.get('common_paths', [])
 
     def _build_game_aliases(self) -> Dict[str, List[str]]:
-        """Build comprehensive alias mapping"""
+        """Build comprehensive alias mapping with partial matches"""
         aliases_map = {}
         for game in self.games_data.get('games', []):
             title = game['title']
             all_names = [title] + game.get('aliases', [])
 
-            # Add more variations
-            for name in list(all_names):
-                # Add lowercase
-                all_names.append(name.lower())
-                # Add without spaces
-                all_names.append(name.replace(' ', ''))
-                # Add with dashes
-                all_names.append(name.replace(' ', '-'))
-                # Add with underscores
-                all_names.append(name.replace(' ', '_'))
+            # Add MANY more variations
+            variations = set()
+            for name in all_names:
+                variations.add(name)
+                variations.add(name.lower())
+                variations.add(name.upper())
+                variations.add(name.replace(' ', ''))
+                variations.add(name.replace(' ', '-'))
+                variations.add(name.replace(' ', '_'))
+                variations.add(name.replace(' ', '.'))
+                variations.add(re.sub(r'[^a-z0-9]', '', name.lower()))
+                variations.add(re.sub(r'[^a-z0-9]', '-', name.lower()))
 
-            aliases_map[title] = list(set(all_names))
+                # Add with "slot", "game" suffixes
+                variations.add(f"{name.lower()}-slot")
+                variations.add(f"{name.lower()}-game")
+                variations.add(f"{name.lower()}slot")
+
+                # For multi-word games, add partial matches
+                words = name.split()
+                if len(words) > 1:
+                    # Add last significant word (e.g., "Crash" from "Goal Crash")
+                    if len(words[-1]) > 3:
+                        variations.add(words[-1].lower())
+                    # Add combined last words
+                    if len(words) >= 2:
+                        variations.add(f"{words[-2].lower()}{words[-1].lower()}")
+                        variations.add(f"{words[-2].lower()}-{words[-1].lower()}")
+
+            aliases_map[title] = list(variations)
 
         return aliases_map
 
@@ -156,7 +174,7 @@ class EnhancedDataExtractor(BaseScraper):
         return found_games
 
     def _detect_in_scripts(self, html: str) -> List[str]:
-        """Detect games in JavaScript and JSON data"""
+        """Detect games in JavaScript and JSON data - ENHANCED"""
         found_games = []
 
         soup = self.parse_html(html)
@@ -168,14 +186,68 @@ class EnhancedDataExtractor(BaseScraper):
             if script_content:
                 script_lower = script_content.lower()
 
-                # Check each game
+                # Try to parse as JSON if it looks like JSON
+                if '{' in script_content and ('"games"' in script_lower or '"providers"' in script_lower):
+                    try:
+                        json_data = json.loads(script_content)
+                        # Recursively search JSON structure
+                        found_games.extend(self._search_json_structure(json_data))
+                    except:
+                        pass
+
+                # Check each game alias
                 for game_title, aliases in self.all_game_aliases.items():
                     for alias in aliases:
-                        if alias.lower() in script_lower:
+                        if len(alias) >= 4 and alias.lower() in script_lower:
                             found_games.append(game_title)
                             break
 
-        return found_games
+        # Also check for JSON-LD schemas
+        json_ld_scripts = soup.find_all('script', type='application/ld+json')
+        for script in json_ld_scripts:
+            try:
+                json_data = json.loads(script.string)
+                found_games.extend(self._search_json_structure(json_data))
+            except:
+                pass
+
+        return list(set(found_games))
+
+    def _search_json_structure(self, obj, depth=0) -> List[str]:
+        """Recursively search JSON structure for game names"""
+        if depth > 10:  # Prevent infinite recursion
+            return []
+
+        found = []
+
+        if isinstance(obj, dict):
+            for key, value in obj.items():
+                # Check keys and values
+                key_lower = str(key).lower()
+                value_str = str(value).lower()
+
+                for game_title, aliases in self.all_game_aliases.items():
+                    for alias in aliases:
+                        if len(alias) >= 4:
+                            if alias.lower() in key_lower or alias.lower() in value_str:
+                                found.append(game_title)
+
+                # Recurse into nested structures
+                if isinstance(value, (dict, list)):
+                    found.extend(self._search_json_structure(value, depth + 1))
+
+        elif isinstance(obj, list):
+            for item in obj:
+                if isinstance(item, (dict, list)):
+                    found.extend(self._search_json_structure(item, depth + 1))
+                else:
+                    item_str = str(item).lower()
+                    for game_title, aliases in self.all_game_aliases.items():
+                        for alias in aliases:
+                            if len(alias) >= 4 and alias.lower() in item_str:
+                                found.append(game_title)
+
+        return list(set(found))
 
     def _detect_in_attributes(self, html: str) -> List[str]:
         """Detect games in HTML data attributes"""
@@ -201,19 +273,30 @@ class EnhancedDataExtractor(BaseScraper):
         return found_games
 
     def _check_common_paths(self, base_url: str) -> List[str]:
-        """Check common paths for games"""
+        """Check common paths for games - EXPANDED"""
         found_games = []
 
-        paths_to_check = ['/games', '/slots', '/casino']
+        # EXPANDED path list
+        paths_to_check = [
+            '/games', '/slots', '/casino', '/providers',
+            '/games/slots', '/casino/games', '/slots/all',
+            '/game-providers', '/software', '/game-library',
+            '/slots/providers', '/casino/providers', '/games/providers',
+            '/triple-cherry', '/triplecherry', '/games/triple-cherry',
+            '/api/games', '/games.json', '/api/providers'
+        ]
 
         for path in paths_to_check:
             url = base_url.rstrip('/') + path
             html, status, _ = self.fetch_page(url)
 
             if html and status == 'online':
-                # Quick check in this page
-                games = self._detect_in_visible_text(html)
-                found_games.extend(games)
+                # Check using all detection methods
+                games = set()
+                games.update(self._detect_in_visible_text(html))
+                games.update(self._detect_in_scripts(html))
+                games.update(self._detect_in_attributes(html))
+                found_games.extend(list(games))
 
         return list(set(found_games))
 

@@ -1,0 +1,39 @@
+{
+  "casinos": [
+    {
+      "name": "1xbet",
+      "url": "https://www.1xbet.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Micasino",
+      "url": "https://www.micasino.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Zeuscasino",
+      "url": "https://zeuscasino.live/",
+      "region": "EU",
+      "country": "Unknown",
+      "priority": "high"
+    },
+    {
+      "name": "24vivo",
+      "url": "https://www.24vivo.com",
+      "region": "LATAM",
+      "country": "Colombia",
+      "priority": "high"
+    },
+    {
+      "name": "Caliente",
+      "url": "https://www.caliente.mx",
+      "region": "LATAM",
+      "country": "Mexico",
+      "priority": "high"
+    }
+  ]
+}

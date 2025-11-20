@@ -28,6 +28,7 @@ logger = logging.getLogger(__name__)
 
 # Import modules
 from scrapers.casino_crawler import CasinoCrawler
+from scrapers.browser_crawler import BrowserCrawler
 from analytics.data_processor import DataProcessor
 from analytics.insights_generator import InsightsGenerator
 from analytics.export_manager import ExportManager
