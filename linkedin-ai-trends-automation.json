@@ -1,0 +1,510 @@
+{
+  "name": "LinkedIn AI Trends Daily Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Schedule Trigger - Daily 9AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://newsapi.org/v2/everything",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "=(\"artificial intelligence\" OR \"AI\" OR \"machine learning\" OR \"deep learning\" OR \"generative AI\" OR \"LLM\" OR \"ChatGPT\" OR \"Claude\" OR \"OpenAI\") AND (\"breakthrough\" OR \"trending\" OR \"latest\" OR \"new\")"
+            },
+            {
+              "name": "language",
+              "value": "es"
+            },
+            {
+              "name": "sortBy",
+              "value": "publishedAt"
+            },
+            {
+              "name": "pageSize",
+              "value": "10"
+            },
+            {
+              "name": "from",
+              "value": "={{ $today.minus({ days: 1 }).toISO() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "news-api-fetch",
+      "name": "Fetch AI News - NewsAPI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        300
+      ],
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "newsapi_credentials",
+          "name": "NewsAPI Credentials"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "news-processing",
+              "name": "articles_summary",
+              "value": "={{ $json.articles.slice(0, 5).map(article => `Título: ${article.title}\\nDescripción: ${article.description}\\nFuente: ${article.source.name}\\nURL: ${article.url}\\n`).join('\\n---\\n') }}",
+              "type": "string"
+            },
+            {
+              "id": "count",
+              "name": "total_articles",
+              "value": "={{ $json.totalResults }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "process-news",
+      "name": "Process News Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "text",
+        "operation": "message",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4o"
+        },
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Eres un experto en marketing de contenidos e inteligencia artificial. Tu tarea es crear posts virales de LinkedIn sobre las últimas tendencias de IA. Debes:\n\n1. Analizar las noticias proporcionadas\n2. Identificar la tendencia más impactante o interesante\n3. Crear un post de LinkedIn que sea:\n   - Atractivo y profesional\n   - Entre 150-300 palabras\n   - Con un hook inicial potente\n   - Que incluya emojis relevantes (máximo 3-4)\n   - Con hashtags relevantes al final (#ArtificialIntelligence #AI #MachineLearning #Innovation #Tech #LinkedIn)\n   - Que invite a la reflexión o acción\n   - En español\n\n4. Generar un prompt detallado para crear una imagen impactante que acompañe el post\n\nDevuelve tu respuesta en formato JSON con esta estructura:\n{\n  \"post_text\": \"el texto completo del post\",\n  \"image_prompt\": \"prompt detallado en inglés para generar la imagen con DALL-E\",\n  \"main_topic\": \"tema principal en 2-3 palabras\"\n}"
+            },
+            {
+              "role": "user",
+              "content": "=Aquí están las últimas noticias sobre IA de las últimas 24 horas:\n\n{{ $json.articles_summary }}\n\nPor favor, crea un post impactante de LinkedIn basado en la tendencia más relevante."
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.8,
+          "maxTokens": 1500
+        },
+        "requestOptions": {}
+      },
+      "id": "openai-content-generation",
+      "name": "OpenAI - Generate Post Content",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        900,
+        300
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "openai_credentials",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse the JSON response from OpenAI\nconst response = $input.first().json.message.content;\n\n// Try to extract JSON from the response\nlet parsed;\ntry {\n  // Check if response is wrapped in code blocks\n  const jsonMatch = response.match(/```json\\s*([\\s\\S]*?)\\s*```/) || response.match(/```\\s*([\\s\\S]*?)\\s*```/);\n  \n  if (jsonMatch) {\n    parsed = JSON.parse(jsonMatch[1]);\n  } else {\n    parsed = JSON.parse(response);\n  }\n} catch (error) {\n  // If parsing fails, try to extract manually\n  const postMatch = response.match(/\"post_text\"\\s*:\\s*\"([^\"]*)\"/s);\n  const promptMatch = response.match(/\"image_prompt\"\\s*:\\s*\"([^\"]*)\"/s);\n  const topicMatch = response.match(/\"main_topic\"\\s*:\\s*\"([^\"]*)\"/s);\n  \n  parsed = {\n    post_text: postMatch ? postMatch[1] : response,\n    image_prompt: promptMatch ? promptMatch[1] : \"Modern AI technology visualization with neural networks and digital innovation\",\n    main_topic: topicMatch ? topicMatch[1] : \"AI Trends\"\n  };\n}\n\nreturn {\n  json: {\n    post_text: parsed.post_text,\n    image_prompt: parsed.image_prompt,\n    main_topic: parsed.main_topic,\n    original_response: response\n  }\n};"
+        },
+        "options": {}
+      },
+      "id": "parse-openai-response",
+      "name": "Parse OpenAI Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "create",
+        "prompt": "={{ $json.image_prompt }}",
+        "options": {
+          "model": "dall-e-3",
+          "quality": "hd",
+          "size": "1024x1024",
+          "style": "vivid"
+        }
+      },
+      "id": "dalle-image-generation",
+      "name": "DALL-E 3 - Generate Image",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        1340,
+        300
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "openai_credentials",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.data[0].url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "download-image",
+      "name": "Download Generated Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1560,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "binaryProperty": "data",
+        "additionalFields": {}
+      },
+      "id": "linkedin-upload-image",
+      "name": "LinkedIn - Upload Image",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        300
+      ],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "linkedin_credentials",
+          "name": "LinkedIn OAuth2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "text": "={{ $('Parse OpenAI Response').item.json.post_text }}",
+        "additionalFields": {
+          "visibility": "PUBLIC"
+        },
+        "imageUrls": "={{ $json.id }}"
+      },
+      "id": "linkedin-create-post",
+      "name": "LinkedIn - Create Post",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        300
+      ],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "linkedin_credentials",
+          "name": "LinkedIn OAuth2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": ""
+          },
+          "conditions": [
+            {
+              "id": "success-check",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-post-success",
+      "name": "Check Post Success",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "success-message",
+              "name": "status",
+              "value": "SUCCESS",
+              "type": "string"
+            },
+            {
+              "id": "post-url",
+              "name": "post_url",
+              "value": "={{ $json.url || 'Post created successfully' }}",
+              "type": "string"
+            },
+            {
+              "id": "topic",
+              "name": "topic",
+              "value": "={{ $('Parse OpenAI Response').item.json.main_topic }}",
+              "type": "string"
+            },
+            {
+              "id": "timestamp",
+              "name": "timestamp",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "success-notification",
+      "name": "Success Notification Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2440,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "error-message",
+              "name": "status",
+              "value": "ERROR",
+              "type": "string"
+            },
+            {
+              "id": "error-details",
+              "name": "error_message",
+              "value": "Failed to create LinkedIn post",
+              "type": "string"
+            },
+            {
+              "id": "timestamp",
+              "name": "timestamp",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "error-notification",
+      "name": "Error Notification Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2440,
+        400
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger - Daily 9AM": {
+      "main": [
+        [
+          {
+            "node": "Fetch AI News - NewsAPI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch AI News - NewsAPI": {
+      "main": [
+        [
+          {
+            "node": "Process News Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process News Data": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Generate Post Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI - Generate Post Content": {
+      "main": [
+        [
+          {
+            "node": "Parse OpenAI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse OpenAI Response": {
+      "main": [
+        [
+          {
+            "node": "DALL-E 3 - Generate Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DALL-E 3 - Generate Image": {
+      "main": [
+        [
+          {
+            "node": "Download Generated Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Generated Image": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn - Upload Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIn - Upload Image": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn - Create Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIn - Create Post": {
+      "main": [
+        [
+          {
+            "node": "Check Post Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Post Success": {
+      "main": [
+        [
+          {
+            "node": "Success Notification Data",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Notification Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "versionId": "1",
+  "meta": {
+    "instanceId": "n8n-cloud-instance"
+  },
+  "id": "linkedin-ai-automation",
+  "tags": [
+    {
+      "id": "automation",
+      "name": "automation"
+    },
+    {
+      "id": "linkedin",
+      "name": "linkedin"
+    },
+    {
+      "id": "ai",
+      "name": "ai"
+    },
+    {
+      "id": "content-creation",
+      "name": "content-creation"
+    }
+  ]
+}
