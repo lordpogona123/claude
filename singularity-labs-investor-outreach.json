@@ -1,0 +1,917 @@
+{
+  "name": "Singularity Labs Investor Outreach",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ],
+          "time": 8
+        }
+      },
+      "id": "Cron Trigger",
+      "name": "Cron Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        -700,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "sheetId": "1ABCDEFG1234567890",
+        "range": "Investors!A:F",
+        "options": {
+          "valueRenderMode": "UNFORMATTED_VALUE",
+          "outputColumns": [
+            "fullName",
+            "companyName",
+            "role",
+            "linkedinUrl",
+            "website",
+            "email",
+            "location"
+          ]
+        }
+      },
+      "name": "Fetch Investors from Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        -420,
+        -160
+      ],
+      "id": "Fetch Investors from Google Sheets",
+      "credentials": {
+        "googleApi": {
+          "id": "google-cred-id",
+          "name": "Google Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.example.com/investors",
+        "responseFormat": "json",
+        "options": {
+          "queryParametersUi": {
+            "parameter": [
+              {
+                "name": "segment",
+                "value": "ai-automation"
+              }
+            ]
+          }
+        }
+      },
+      "name": "Fetch Investors from API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        -420,
+        160
+      ],
+      "id": "Fetch Investors from API"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.enableSheetSource}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "name": "Use Sheet Source?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        0
+      ],
+      "id": "Use Sheet Source?"
+    },
+    {
+      "parameters": {
+        "mode": "passThrough",
+        "output": "input1",
+        "options": {}
+      },
+      "name": "Merge Leads",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        0
+      ],
+      "id": "Merge Leads"
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "name": "Split Investors",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "Split Investors"
+    },
+    {
+      "parameters": {
+        "url": "={{$json.linkedinUrl || ''}}",
+        "responseFormat": "string",
+        "options": {}
+      },
+      "name": "Enrich from LinkedIn (HTTP placeholder)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        220,
+        -160
+      ],
+      "id": "Enrich from LinkedIn (HTTP placeholder)"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "linkedinContent",
+              "value": "={{$json.body || $json.data || ''}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Normalize LinkedIn Content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        220,
+        -40
+      ],
+      "id": "Normalize LinkedIn Content"
+    },
+    {
+      "parameters": {
+        "url": "={{$json.website || ''}}",
+        "responseFormat": "string",
+        "options": {}
+      },
+      "name": "Enrich from Website (HTTP placeholder)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        220,
+        160
+      ],
+      "id": "Enrich from Website (HTTP placeholder)"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "websiteContent",
+              "value": "={{$json.body || $json.data || ''}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Normalize Website Content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        220,
+        280
+      ],
+      "id": "Normalize Website Content"
+    },
+    {
+      "parameters": {
+        "functionCode": "const investor = $json;\nreturn [{\n  json: {\n    fullName: investor.fullName || investor.name || '',\n    companyName: investor.companyName || investor.fund || '',\n    role: investor.role || investor.title || '',\n    linkedinUrl: investor.linkedinUrl || '',\n    website: investor.website || '',\n    email: investor.email || '',\n    location: investor.location || investor.city || investor.country || '',\n    rawLinkedIn: investor.linkedinContent || '',\n    rawWebsite: investor.websiteContent || '',\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "name": "Aggregate Investor Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        480,
+        0
+      ],
+      "id": "Aggregate Investor Data"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combination": "wait",
+        "join": "outer"
+      },
+      "name": "Attach LinkedIn to Investor",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        360,
+        -160
+      ],
+      "id": "Attach LinkedIn to Investor"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combination": "wait",
+        "join": "outer"
+      },
+      "name": "Attach Website to Investor",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        360,
+        40
+      ],
+      "id": "Attach Website to Investor"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "prompt": "You are an expert VC analyst. Given this raw data about an investor, summarize who they are, what they care about, what they usually invest in, and which topics related to AI automation and productivity might resonate with them. Return ONLY valid JSON with the keys: personaSummary, investmentThesis, topicsToMention, possibleObjections. Input data:\n{{JSON.stringify($json)}}",
+        "temperature": 0.2,
+        "maxTokens": 600
+      },
+      "name": "Summarize Investor Profile (AI)",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        640,
+        0
+      ],
+      "id": "Summarize Investor Profile (AI)",
+      "credentials": {
+        "openAiApi": {
+          "id": "openai-cred-id",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "const summary = $json;\nconst investor = $items('Aggregate Investor Data', 0, 0).json;\nconst companyInfo = `You represent Singularity Labs, an AI automation agency from Valencia, Spain that builds automations and AI agents using n8n, Zapier, Notion, LinkedIn and custom LLMs to help B2B companies get more leads, save time, and scale operations.`;\nreturn [{ json: { ...investor, investorSummary: summary, companyInfo } }];"
+      },
+      "name": "Prepare Outreach Context",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        840,
+        0
+      ],
+      "id": "Prepare Outreach Context"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "prompt": "You are writing a highly personalized outreach message to an investor. You represent Singularity Labs, an AI automation agency from Valencia that builds automations and AI agents using tools like n8n, Zapier, Notion, LinkedIn and LLMs to help B2B companies get more leads and save time.\n\nUse the JSON below describing the investor to:\n1) Connect with their background and investment thesis.\n2) Mention 1–2 very specific details about them (company, sector, geography, portfolio, or topics they talk about).\n3) Explain, in simple and concrete terms, how Singularity Labs could help their portfolio or their own dealflow.\n4) End with a clear CTA for a short call (15–20 minutes).\n\nConstraints:\n- Tone: professional but friendly, concise, no fluff.\n- Length: max 160–200 words.\n- Output MUST be valid JSON with two keys: subject, body.\n\nInvestor JSON:\n{{JSON.stringify($json)}}",
+        "temperature": 0.25,
+        "maxTokens": 700
+      },
+      "name": "Generate Personalized Outreach Message (AI)",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "Generate Personalized Outreach Message (AI)",
+      "credentials": {
+        "openAiApi": {
+          "id": "openai-cred-id",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "const message = $json;\nconst investor = $items('Prepare Outreach Context', 0, 0).json;\nreturn [{ json: { ...investor, ...message } }];"
+      },
+      "name": "Attach Message to Investor",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        0
+      ],
+      "id": "Attach Message to Investor"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.email}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "name": "Has Email?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        -160
+      ],
+      "id": "Has Email?"
+    },
+    {
+      "parameters": {
+        "fromEmail": "outreach@singularitylabs.com",
+        "toEmail": "={{$json.email}}",
+        "subject": "={{$json.subject}}",
+        "text": "={{$json.body}}",
+        "options": {
+          "allowUnauthorizedCerts": false
+        }
+      },
+      "name": "Send Email",
+      "type": "n8n-nodes-base.smtp",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        -280
+      ],
+      "id": "Send Email",
+      "credentials": {
+        "smtp": {
+          "id": "smtp-cred-id",
+          "name": "SMTP Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.linkedin.com/v2/messages",
+        "method": "POST",
+        "authentication": "oAuth2",
+        "responseFormat": "json",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "={\"recipient\": $json.linkedinUrl, \"message\": $json.body}"
+      },
+      "name": "Send LinkedIn Message (HTTP placeholder)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1420,
+        40
+      ],
+      "id": "Send LinkedIn Message (HTTP placeholder)"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.linkedinUrl}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "name": "Has LinkedIn?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        80
+      ],
+      "id": "Has LinkedIn?"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "channel",
+              "value": "email"
+            },
+            {
+              "name": "status",
+              "value": "sent"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Tag Email Sent",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1640,
+        -280
+      ],
+      "id": "Tag Email Sent"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "channel",
+              "value": "linkedin"
+            },
+            {
+              "name": "status",
+              "value": "sent"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Tag LinkedIn Sent",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1640,
+        40
+      ],
+      "id": "Tag LinkedIn Sent"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "channel",
+              "value": "none"
+            },
+            {
+              "name": "status",
+              "value": "skipped"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Tag Skipped",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1420,
+        220
+      ],
+      "id": "Tag Skipped"
+    },
+    {
+      "parameters": {
+        "sheetId": "1ABCDEFG1234567890",
+        "range": "OutreachLog!A:H",
+        "options": {
+          "valueInputMode": "USER_ENTERED"
+        },
+        "data": "={{[{\"name\": $json.fullName, \"email\": $json.email, \"linkedin\": $json.linkedinUrl, \"channel\": $json.channel, \"status\": $json.status, \"subject\": $json.subject, \"body\": $json.body, \"timestamp\": new Date().toISOString()}]}}"
+      },
+      "name": "Log Result in Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        1840,
+        -120
+      ],
+      "id": "Log Result in Google Sheets",
+      "credentials": {
+        "googleApi": {
+          "id": "google-cred-id",
+          "name": "Google Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Advance batch\nreturn items;"
+      },
+      "name": "Next Investor",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        2040,
+        -120
+      ],
+      "id": "Next Investor"
+    },
+    {
+      "parameters": {},
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        320
+      ],
+      "id": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "error"
+            },
+            {
+              "name": "channel",
+              "value": "none"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Tag Error",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        20,
+        320
+      ],
+      "id": "Tag Error"
+    },
+    {
+      "parameters": {
+        "sheetId": "1ABCDEFG1234567890",
+        "range": "OutreachLog!A:H",
+        "options": {
+          "valueInputMode": "USER_ENTERED"
+        },
+        "data": "={{[{\"name\": $json[\"Error Message\"], \"email\": '', \"linkedin\": '', \"channel\": 'none', \"status\": 'error', \"subject\": '', \"body\": $json[\"Stack\"] || '', \"timestamp\": new Date().toISOString()}]}}"
+      },
+      "name": "Log Error",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        240,
+        320
+      ],
+      "id": "Log Error",
+      "credentials": {
+        "googleApi": {
+          "id": "google-cred-id",
+          "name": "Google Account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Cron Trigger": {
+      "main": [
+        [
+          {
+            "node": "Use Sheet Source?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Use Sheet Source?": {
+      "main": [
+        [
+          {
+            "node": "Fetch Investors from Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Fetch Investors from API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Investors from Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Merge Leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Investors from API": {
+      "main": [
+        [
+          {
+            "node": "Merge Leads",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Leads": {
+      "main": [
+        [
+          {
+            "node": "Split Investors",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Investors": {
+      "main": [
+        [
+          {
+            "node": "Enrich from LinkedIn (HTTP placeholder)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Attach LinkedIn to Investor",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Enrich from Website (HTTP placeholder)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enrich from LinkedIn (HTTP placeholder)": {
+      "main": [
+        [
+          {
+            "node": "Normalize LinkedIn Content",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Normalize LinkedIn Content": {
+      "main": [
+        [
+          {
+            "node": "Attach LinkedIn to Investor",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Attach LinkedIn to Investor": {
+      "main": [
+        [
+          {
+            "node": "Attach Website to Investor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enrich from Website (HTTP placeholder)": {
+      "main": [
+        [
+          {
+            "node": "Normalize Website Content",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Normalize Website Content": {
+      "main": [
+        [
+          {
+            "node": "Attach Website to Investor",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Attach Website to Investor": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Investor Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Investor Data": {
+      "main": [
+        [
+          {
+            "node": "Summarize Investor Profile (AI)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize Investor Profile (AI)": {
+      "main": [
+        [
+          {
+            "node": "Prepare Outreach Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Outreach Context": {
+      "main": [
+        [
+          {
+            "node": "Generate Personalized Outreach Message (AI)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Personalized Outreach Message (AI)": {
+      "main": [
+        [
+          {
+            "node": "Attach Message to Investor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Attach Message to Investor": {
+      "main": [
+        [
+          {
+            "node": "Has Email?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Email?": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Has LinkedIn?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has LinkedIn?": {
+      "main": [
+        [
+          {
+            "node": "Send LinkedIn Message (HTTP placeholder)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tag Skipped",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Tag Email Sent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send LinkedIn Message (HTTP placeholder)": {
+      "main": [
+        [
+          {
+            "node": "Tag LinkedIn Sent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tag Email Sent": {
+      "main": [
+        [
+          {
+            "node": "Log Result in Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tag LinkedIn Sent": {
+      "main": [
+        [
+          {
+            "node": "Log Result in Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tag Skipped": {
+      "main": [
+        [
+          {
+            "node": "Log Result in Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Result in Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Next Investor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Next Investor": {
+      "main": [
+        [
+          {
+            "node": "Split Investors",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Tag Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tag Error": {
+      "main": [
+        [
+          {
+            "node": "Log Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "version": 2,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "id": "1"
+}
